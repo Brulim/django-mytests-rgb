@@ -18,9 +18,12 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    # path('admin/', admin.site.urls), tentando trocar
-    path('rgb/', TemplateView.as_view(template_name="rgb.html")),
-    path('', TemplateView.as_view(template_name="index.html")),
+    path('adminbrulim/', admin.site.urls),
+    path('rgb/', TemplateView.as_view(template_name="rgb.html"), name='rgb'),
+    path('', TemplateView.as_view(template_name="index.html"), name='index'),
+
+    #alterações Udemy
+    path('contas/', include('django.contrib.auth.urls')),
 
     # alterações do vídeo de autenticação
     #path('', include('events.urls')),
