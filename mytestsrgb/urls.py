@@ -20,6 +20,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('adminbrulim/', admin.site.urls),
     path('rgb/', TemplateView.as_view(template_name="rgb.html"), name='rgb'),
+    path('vermelho/', TemplateView.as_view(template_name="vermelho.html")),
     path('', TemplateView.as_view(template_name="index.html"), name='index'),
 
     #alterações Udemy
