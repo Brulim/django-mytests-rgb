@@ -25,9 +25,6 @@ class UsuarioManager(BaseUserManager):
     def create_superuser(self, email, password, **extra_fields):
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('r', True)
-        extra_fields.setdefault('g', True)
-        extra_fields.setdefault('b', True)
 
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser precisa ter is_superuser=True')
@@ -39,13 +36,10 @@ class UsuarioManager(BaseUserManager):
 
 class CustomUsuario(AbstractUser):
     email = models.EmailField('E-mail', unique=True)
-    r = models.BooleanField('Vermelho', default=False)
-    g = models.BooleanField('Verde', default=False)
-    b = models.BooleanField('Azul', default=False)
     is_staff = models.BooleanField('Membro da equipe', default=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'r', 'g', 'b']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def __str__(self):
         return self.email
